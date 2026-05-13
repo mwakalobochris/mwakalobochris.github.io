@@ -6,12 +6,42 @@
     <title>Mr. Mwakalobo — Portfolio</title>
     <meta name="description" content="Professional portfolio of Mr. Mwakalobo, a full-stack developer and designer from Tanzania.">
     <meta name="author" content="Mr. Mwakalobo">
+    <meta name="theme-color" content="#1a1a1a">
     <meta property="og:title" content="Mr. Mwakalobo — Portfolio">
     <meta property="og:description" content="Web development, UI/UX design, multimedia production, and digital brand work.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mwakalobochris.github.io/">
+    <meta property="og:image" content="https://mwakalobochris.github.io/og-image.jpg">
+    <link rel="canonical" href="https://mwakalobochris.github.io/">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mr. Mwakalobo",
+      "jobTitle": "Full-Stack Developer & UI/UX Designer",
+      "url": "https://mwakalobochris.github.io/",
+      "image": "https://mwakalobochris.github.io/og-image.jpg",
+      "sameAs": [
+        "https://github.com/mwakalobo",
+        "https://www.linkedin.com/in/mwakalobo",
+        "https://www.behance.net/mwakalobo",
+        "https://www.instagram.com/@mwakalobo_chris"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Tanzania"
+      }
+    }
+    </script>
 </head>
 <body>
+
+<!-- Skip to Main Content Link (Accessibility) -->
+<a href="#home" class="skip-link">Skip to main content</a>
 
 <!-- ============================================================
      PART 1: SEMANTIC HEADER
@@ -63,6 +93,9 @@
         </div>
 
         <!-- STATS ROW — Flexbox (Part 3) -->
+        <section aria-labelledby="stats-heading" class="sr-only-heading">
+            <h2 id="stats-heading">Professional Statistics</h2>
+        </section>
         <div class="stats-row">
             <div class="stat-card accent" style="animation-delay:0.1s">
                 <span class="stat-num">4+</span>
@@ -131,7 +164,7 @@
         <div class="sidebar-card">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="files.zip">Download CV</a></li>
+                <li><a href="cv.pdf">Download CV</a></li>
                 <li><a href="projects.html">View Projects</a></li>
                 <li><a href="contact.html">Book a Call</a></li>
                 <li><a href="https://github.com/mwakalobo" target="_blank" rel="noreferrer noopener">My GitHub</a></li>
@@ -191,6 +224,37 @@
         <p style="font-size:0.75rem; margin-top:0.5rem;">&copy; 2026 Mr. Mwakalobo. All rights reserved.</p>
     </div>
 </footer>
+
+<style>
+/* Accessibility: Hide but keep in DOM for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Screen reader only content */
+.sr-only-heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+</style>
 
 </body>
 </html>
