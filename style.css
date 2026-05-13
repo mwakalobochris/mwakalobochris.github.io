@@ -1,0 +1,937 @@
+/* ============================================================
+   MR. MWAKALOBO PORTFOLIO — MASTER STYLESHEET
+   Parts 1–5: Semantic HTML, CSS Styling, Flexbox, Grid, Advanced CSS
+   ============================================================ */
+
+/* PART 2: CSS CUSTOM PROPERTIES (Design Tokens) */
+:root {
+  --primary:       #0f2027;
+  --secondary:     #203a43;
+  --accent:        #00c9a7;
+  --accent-warm:   #f5a623;
+  --bg:            #0a0f14;
+  --surface:       #131c24;
+  --surface-2:     #1a2632;
+  --border:        rgba(0, 201, 167, 0.18);
+  --text:          #e8edf2;
+  --text-muted:    #7a9ab0;
+  --text-dim:      #4a6275;
+  --shadow-soft:   0 4px 24px rgba(0,0,0,0.45);
+  --shadow-glow:   0 0 28px rgba(0, 201, 167, 0.18);
+  --radius:        12px;
+  --radius-sm:     7px;
+  --transition:    all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'DM Sans', 'Segoe UI', sans-serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* PART 2: RESET & BASE */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,201,167,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 90%, rgba(245,166,35,0.04) 0%, transparent 60%);
+}
+
+/* GOOGLE FONTS IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* PART 4: CSS GRID — PAGE-LEVEL LAYOUT */
+.page-wrapper {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "content"
+    "footer";
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-areas: "main sidebar";
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  grid-area: content;
+}
+
+.page-grid.full-width {
+  grid-template-areas: "main main";
+  grid-template-columns: 1fr;
+}
+
+/* ============================================================
+   PART 1+2: HEADER — Semantic + Styled
+   ============================================================ */
+header {
+  grid-area: header;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* PART 5: ::before decorative element */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 300px at 15% 50%, rgba(0,201,167,0.12) 0%, transparent 70%),
+    radial-gradient(circle 200px at 85% 20%, rgba(245,166,35,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* PART 5: ::after decorative line */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.header-avatar {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  margin: 0 auto 1rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-glow);
+  position: relative;
+  z-index: 1;
+  /* PART 5: keyframe animation */
+  animation: pulseRing 3s ease-in-out infinite;
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  position: relative; z-index: 1;
+}
+
+header h1 span {
+  color: var(--accent);
+  font-style: italic;
+}
+
+header p.tagline {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  position: relative; z-index: 1;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   PART 1+2+3: NAVIGATION — Semantic + Horizontal Flexbox
+   ============================================================ */
+nav {
+  grid-area: nav;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+/* PART 3: FLEXBOX — horizontal nav */
+nav ul {
+  list-style: none;
+  display: flex;                    /* Flexbox */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.6rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  display: block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1.1rem;
+  border-radius: 50px;
+  letter-spacing: 0.4px;
+  transition: var(--transition);
+  position: relative;
+}
+
+/* PART 5: ::before underline animation on nav links */
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 50%; right: 50%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* PART 2+5: HOVER EFFECTS */
+nav ul li a:hover {
+  color: var(--accent);
+  background: rgba(0, 201, 167, 0.08);
+}
+
+nav ul li a:hover::before {
+  left: 10%; right: 10%;
+}
+
+nav ul li a.active {
+  color: var(--accent);
+  background: rgba(0, 201, 167, 0.12);
+}
+
+/* ============================================================
+   PART 2+3: MAIN CONTENT AREA
+   ============================================================ */
+main {
+  grid-area: main;
+  min-width: 0;
+}
+
+/* ============================================================
+   HERO BANNER (index.html)
+   ============================================================ */
+.hero {
+  display: flex;               /* PART 3: Flexbox */
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0,201,167,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-avatar {
+  flex-shrink: 0;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: linear-gradient(135deg, var(--surface-2), var(--primary));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  box-shadow: var(--shadow-glow);
+  animation: floatBob 4s ease-in-out infinite;
+}
+
+.hero-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.hero-content h2 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.hero-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin-bottom: 1.2rem;
+}
+
+.hero-badges {
+  display: flex;      /* PART 3: Flexbox */
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.badge-pill {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  background: rgba(0,201,167,0.1);
+  border: 1px solid rgba(0,201,167,0.3);
+  border-radius: 50px;
+  padding: 0.25rem 0.75rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PART 2: SECTIONS
+   ============================================================ */
+section {
+  margin-bottom: 2.5rem;
+}
+
+section h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+/* PART 5: ::after decorative accent on section headings */
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 50px; height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.section-intro {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ============================================================
+   PART 2+3: ARTICLE CARDS — Flexbox grid
+   ============================================================ */
+.articles-grid {
+  display: flex;         /* PART 3: Flexbox */
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.articles-grid article {
+  flex: 1 1 260px;       /* side-by-side when space allows */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  /* PART 2: border/shadow */
+  box-shadow: var(--shadow-soft);
+  /* PART 5: transition */
+  transition: var(--transition);
+}
+
+/* PART 5: ::before decorative glow line on card */
+.articles-grid article::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+/* PART 2+5: HOVER on article cards */
+.articles-grid article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 201, 167, 0.4);
+  box-shadow: var(--shadow-glow), var(--shadow-soft);
+}
+
+.articles-grid article:hover::before {
+  transform: scaleX(1);
+}
+
+.article-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.articles-grid article h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.articles-grid article p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent);
+  background: rgba(0, 201, 167, 0.1);
+  border: 1px solid rgba(0, 201, 167, 0.25);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+}
+
+/* ============================================================
+   STATS ROW
+   ============================================================ */
+.stats-row {
+  display: flex;       /* PART 3: Flexbox */
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  flex: 1 1 120px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  /* PART 5: animation */
+  animation: fadeSlideUp 0.5s ease both;
+  transition: var(--transition);
+}
+
+.stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); }
+
+.stat-card.accent { background: rgba(0,201,167,0.1); border-color: var(--accent); }
+
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ============================================================
+   SKILL BARS (index/about)
+   ============================================================ */
+.skills-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.skill-item label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.skill-bar {
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+  border-radius: 6px;
+  width: 0%;
+  /* PART 5: animation */
+  animation: growBar 1.2s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* ============================================================
+   TIMELINE (about.html)
+   ============================================================ */
+.timeline { position: relative; padding-left: 1.5rem; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+
+/* PART 5: ::before dot on timeline */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem; top: 0.4rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.timeline-item h4 {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.timeline-item span {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+
+.timeline-item p { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+/* ============================================================
+   SERVICES TABLE
+   ============================================================ */
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.services-table thead {
+  background: var(--surface-2);
+}
+
+.services-table th {
+  padding: 1rem;
+  text-align: left;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-family: var(--font-mono);
+  border-bottom: 1px solid var(--border);
+}
+
+.services-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  transition: var(--transition);
+}
+
+/* PART 5: :nth-child() alternate rows */
+.services-table tbody tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* PART 5: :hover on table rows */
+.services-table tbody tr:hover td {
+  background: rgba(0, 201, 167, 0.05);
+  color: var(--text);
+}
+
+.badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.7rem; font-family: var(--font-mono); }
+.badge-free     { background: rgba(0,201,167,0.15); color: var(--accent); border: 1px solid rgba(0,201,167,0.3); }
+.badge-low      { background: rgba(245,166,35,0.12); color: var(--accent-warm); border: 1px solid rgba(245,166,35,0.3); }
+.badge-moderate { background: rgba(255,90,90,0.1); color: #ff7070; border: 1px solid rgba(255,90,90,0.3); }
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact-grid {
+  display: grid;      /* PART 4: Grid */
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.form-group { margin-bottom: 1.2rem; }
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 1rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: var(--transition);
+  outline: none;
+  resize: vertical;
+}
+
+/* PART 5: :hover / :focus on inputs */
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+  border-color: rgba(0,201,167,0.4);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,201,167,0.12);
+  background: var(--surface-2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-dim); }
+
+.contact-info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.contact-info-item {
+  display: flex;    /* PART 3: Flexbox */
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-info-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.contact-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  background: rgba(0,201,167,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.contact-info-item h4 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.contact-info-item p  { font-size: 0.88rem; color: var(--text); }
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar { grid-area: sidebar; }
+
+.sidebar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  /* PART 5: transition */
+  transition: var(--transition);
+}
+
+.sidebar-card:hover {
+  border-color: rgba(0, 201, 167, 0.3);
+  box-shadow: var(--shadow-glow);
+}
+
+.sidebar-card h3 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-card ul { list-style: none; }
+
+.sidebar-card ul li {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+  /* PART 5: transition */
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-card ul li a {
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sidebar-card ul li a:hover,
+.sidebar-card ul li:hover {
+  color: var(--accent);
+  padding-left: 0.4rem;
+}
+
+/* PART 5: ::before bullet on sidebar list items */
+.sidebar-card ul li::before {
+  content: '›';
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.alert {
+  background: rgba(245,166,35,0.08);
+  border-left: 3px solid var(--accent-warm);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  line-height: 1.55;
+}
+
+.alert strong { color: var(--accent-warm); display: block; margin-bottom: 0.2rem; }
+
+.alert.success {
+  background: rgba(0,201,167,0.07);
+  border-color: var(--accent);
+}
+
+.alert.success strong { color: var(--accent); }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent);
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  /* PART 5: transition */
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+
+.btn:hover {
+  background: #00e6bf;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,201,167,0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.btn-outline:hover {
+  background: rgba(0,201,167,0.1);
+  color: var(--accent);
+}
+
+/* ============================================================
+   PART 1: FOOTER — Semantic
+   ============================================================ */
+footer {
+  grid-area: footer;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;       /* PART 3: Flexbox */
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+footer h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+footer p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+footer a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+footer a:hover { color: #00e6bf; }
+
+.footer-links {
+  display: flex;      /* PART 3: Flexbox */
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.social-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-btn:hover {
+  border-color: var(--accent);
+  background: rgba(0,201,167,0.1);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   PART 5: KEYFRAME ANIMATIONS
+   ============================================================ */
+@keyframes pulseRing {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,201,167,0.4), var(--shadow-glow); }
+  50%       { box-shadow: 0 0 0 10px rgba(0,201,167,0), var(--shadow-glow); }
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes growBar {
+  from { width: 0%; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* PART 5: Staggered animation on page load */
+.articles-grid article:nth-child(1) { animation: fadeSlideUp 0.5s 0.1s ease both; }
+.articles-grid article:nth-child(2) { animation: fadeSlideUp 0.5s 0.2s ease both; }
+.articles-grid article:nth-child(3) { animation: fadeSlideUp 0.5s 0.3s ease both; }
+.articles-grid article:nth-child(4) { animation: fadeSlideUp 0.5s 0.4s ease both; }
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.mono { font-family: var(--font-mono); }
+.text-accent { color: var(--accent); }
+.text-muted { color: var(--text-muted); }
+.mt-1 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 1rem; }
+
+/* ============================================================
+   PART 5: RESPONSIVE — MEDIA QUERIES
+   ============================================================ */
+@media (max-width: 900px) {
+  .page-grid {
+    grid-template-areas:
+      "main"
+      "sidebar";
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-badges { justify-content: center; }
+}
+
+@media (max-width: 640px) {
+  header h1 { font-size: 1.4rem; }
+  .header-avatar { width: 70px; height: 70px; font-size: 1.8rem; }
+
+  nav ul {
+    gap: 0.1rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  nav ul li a { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+
+  .articles-grid { flex-direction: column; }
+
+  .stats-row { gap: 0.6rem; }
+
+  .stat-num { font-size: 1.4rem; }
+}

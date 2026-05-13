@@ -1,1 +1,196 @@
-<h1 style="color:green">This is my first page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Mwakalobo — Portfolio</title>
+    <meta name="description" content="Professional portfolio of Mr. Mwakalobo, a full-stack developer and designer from Tanzania.">
+    <meta name="author" content="Mr. Mwakalobo">
+    <meta property="og:title" content="Mr. Mwakalobo — Portfolio">
+    <meta property="og:description" content="Web development, UI/UX design, multimedia production, and digital brand work.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     PART 1: SEMANTIC HEADER
+     ============================================================ -->
+<header>
+    <div class="header-avatar">👨‍💻</div>
+    <h1>Mr. <span>Mwakalobo</span></h1>
+    <p class="tagline">Full-Stack Developer · UI/UX Designer · Multimedia Specialist</p>
+</header>
+
+<!-- PART 1+2+3: SEMANTIC NAV — Horizontal Flexbox -->
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- PART 4: CSS GRID PAGE LAYOUT -->
+<div class="page-grid">
+
+    <!-- MAIN CONTENT -->
+    <main id="home">
+
+        <!-- HERO BANNER — Flexbox (Part 3) -->
+        <div class="hero">
+            <div class="hero-avatar">👨‍💻</div>
+            <div class="hero-content">
+                <h2>Building <em>Digital Experiences</em><br>That Actually Matter</h2>
+                <p>
+                    Web developer, designer, and multimedia specialist based in Tanzania.
+                    I turn complex problems into clean, performant, and beautiful digital products.
+                </p>
+                <div class="hero-badges">
+                    <span class="badge-pill">HTML5 / CSS3</span>
+                    <span class="badge-pill">JavaScript</span>
+                    <span class="badge-pill">UI Design</span>
+                    <span class="badge-pill">Multimedia</span>
+                    <span class="badge-pill">Responsive Web</span>
+                </div>
+                <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                    <a href="projects.html" class="btn">View Projects →</a>
+                    <a href="contact.html" class="btn btn-outline">Hire Me</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATS ROW — Flexbox (Part 3) -->
+        <div class="stats-row">
+            <div class="stat-card accent" style="animation-delay:0.1s">
+                <span class="stat-num">4+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-card" style="animation-delay:0.2s">
+                <span class="stat-num">30+</span>
+                <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-card accent" style="animation-delay:0.3s">
+                <span class="stat-num">12</span>
+                <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-card" style="animation-delay:0.4s">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Dedication</span>
+            </div>
+        </div>
+
+        <!-- SECTION 1: Featured Work (2 articles) -->
+        <section id="featured">
+            <h2>Featured Work</h2>
+            <p class="section-intro">A snapshot of recent projects spanning web development, UI design, and multimedia.</p>
+            <div class="articles-grid">
+                <article>
+                    <span class="article-icon">🏥</span>
+                    <h3>Community Health System</h3>
+                    <p>A multi-page digital health platform for the Ministry of Health Tanzania — built with semantic HTML5, CSS Grid, Flexbox, and advanced CSS animations.</p>
+                    <span class="tag">HTML · CSS · Grid</span>
+                </article>
+                <article>
+                    <span class="article-icon">🎨</span>
+                    <h3>Brand Identity — TechDar</h3>
+                    <p>Complete brand design package for a Dar es Salaam tech startup: logo, color system, typography, UI kit, and marketing collateral in Adobe Suite.</p>
+                    <span class="tag">Design · Branding</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Core Skills (2 articles) -->
+        <section id="skills-preview">
+            <h2>Core Expertise</h2>
+            <p class="section-intro">Technologies and tools I use to deliver production-quality results.</p>
+            <div class="articles-grid">
+                <article>
+                    <span class="article-icon">🌐</span>
+                    <h3>Web Development</h3>
+                    <p>Semantic HTML5, modern CSS (Grid, Flexbox, Custom Properties), JavaScript ES6+, responsive and accessible front-end code.</p>
+                    <span class="tag">Frontend</span>
+                </article>
+                <article>
+                    <span class="article-icon">🖥️</span>
+                    <h3>UI/UX & Multimedia</h3>
+                    <p>Wireframing, prototyping, graphic design, video editing, and motion graphics. Adobe CC, Figma, and web-based design tools.</p>
+                    <span class="tag">Design</span>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PART 1: SEMANTIC ASIDE (Sidebar) -->
+    <aside class="sidebar">
+
+        <!-- Quick Links -->
+        <div class="sidebar-card">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="files.zip">Download CV</a></li>
+                <li><a href="projects.html">View Projects</a></li>
+                <li><a href="contact.html">Book a Call</a></li>
+                <li><a href="https://github.com/mwakalobo" target="_blank" rel="noreferrer noopener">My GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/mwakalobo" target="_blank" rel="noreferrer noopener">LinkedIn Profile</a></li>
+                <li><a href="https://www.behance.net/mwakalobo" target="_blank" rel="noreferrer noopener">Design Portfolio</a></li>
+                <li><a href="contact.html">Testimonials</a></li>
+            </ul>
+        </div>
+
+        <!-- Status Card -->
+        <div class="sidebar-card">
+            <h3>Availability</h3>
+            <div class="alert success">
+                <strong>✅ Open to Work</strong>
+                Currently available for freelance projects and full-time roles starting July 2026.
+            </div>
+            <div class="alert">
+                <strong>📍 Based in Tanzania</strong>
+                Available for remote work worldwide and on-site projects in East Africa.
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="sidebar-card">
+            <h3>Tech Stack</h3>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                <span class="badge-pill" style="font-size:0.7rem;">HTML5</span>
+                <span class="badge-pill" style="font-size:0.7rem;">CSS3</span>
+                <span class="badge-pill" style="font-size:0.7rem;">JavaScript</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Figma</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Adobe XD</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Photoshop</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Git</span>
+                <span class="badge-pill" style="font-size:0.7rem;">MySQL</span>
+            </div>
+        </div>
+
+    </aside>
+
+</div><!-- end .page-grid -->
+
+<!-- PART 1: SEMANTIC FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <h3>👨‍💻 Mr. Mwakalobo</h3>
+        <p>Full-Stack Developer · UI Designer · Multimedia Specialist</p>
+        <div class="footer-links">
+            <a href="mailto:hello@mwakalobo.dev">hello@mwakalobo.dev</a>
+            <a href="tel:+255700000000">+255 700 000 000</a>
+        </div>
+        <div class="footer-social">
+            <a class="social-btn" href="https://github.com/mwakalobo" target="_blank" rel="noreferrer noopener" title="GitHub"><img src="img/git.png" alt="GitHub" style="width:20px; height:20px;"></a>
+            <a class="social-btn" href="https://www.linkedin.com/in/mwakalobo" target="_blank" rel="noreferrer noopener" title="LinkedIn"><img src="img/in.png" alt="LinkedIn" style="width:20px; height:20px;"></a>
+            <a class="social-btn" href="https://facebook.com/mwakalobo" target="_blank" rel="noreferrer noopener" title="Facebook"><img src="img/face.png" alt="Facebook" style="width:20px; height:20px;"></a>
+            <a class="social-btn" href="https://www.instagram.com/@mwakalobo_chris" target="_blank" rel="noreferrer noopener" title="Instagram"><img src="img/inst.jpg" alt="Instagram" style="width:20px; height:20px;"></a>
+        </div>
+        <p style="font-size:0.75rem; margin-top:0.5rem;">&copy; 2026 Mr. Mwakalobo. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

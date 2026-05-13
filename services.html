@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services — Mr. Mwakalobo Portfolio</title>
+    <meta name="description" content="Professional services offered by Mr. Mwakalobo, including website development, UI/UX design, branding, and multimedia.">
+    <meta name="author" content="Mr. Mwakalobo">
+    <meta property="og:title" content="Services — Mr. Mwakalobo Portfolio">
+    <meta property="og:description" content="Custom web development, UI design, branding, and multimedia production services.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PART 1: SEMANTIC HEADER -->
+<header>
+    <div class="header-avatar">👨‍💻</div>
+    <h1>Mr. <span>Mwakalobo</span></h1>
+    <p class="tagline">Full-Stack Developer · UI/UX Designer · Multimedia Specialist</p>
+</header>
+
+<!-- PART 1+3: NAV — Flexbox -->
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- PART 4: CSS GRID -->
+<div class="page-grid">
+
+    <main id="services">
+
+        <!-- SECTION 1: Core Services (2 articles) -->
+        <section>
+            <h2>What I Offer</h2>
+            <p class="section-intro">
+                Professional services across web development, UI/UX design, and multimedia production — tailored to your goals and budget.
+            </p>
+            <div class="articles-grid">
+                <article>
+                    <span class="article-icon">🌐</span>
+                    <h3>Website Development</h3>
+                    <p>Custom, responsive websites built from scratch with clean HTML5, CSS3, and JavaScript. Mobile-first, fast, and accessible — no page-builder shortcuts.</p>
+                    <span class="tag">Development</span>
+                </article>
+                <article>
+                    <span class="article-icon">📱</span>
+                    <h3>UI/UX Design</h3>
+                    <p>Wireframes, prototypes, and high-fidelity UI designs in Figma or Adobe XD. Focused on user flow, visual hierarchy, and conversion-optimized layouts.</p>
+                    <span class="tag">Design</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Multimedia & More (2 articles) -->
+        <section>
+            <h2>Creative &amp; Media</h2>
+            <p class="section-intro">Beyond code — visual content, branding, and multimedia production that elevates your digital presence.</p>
+            <div class="articles-grid">
+                <article>
+                    <span class="article-icon">🎬</span>
+                    <h3>Multimedia Production</h3>
+                    <p>Video editing, motion graphics, social media content creation, and promotional materials. Adobe Premiere Pro, After Effects, and Photoshop.</p>
+                    <span class="tag">Multimedia</span>
+                </article>
+                <article>
+                    <span class="article-icon">🎨</span>
+                    <h3>Brand &amp; Graphic Design</h3>
+                    <p>Logo design, brand identity systems, business cards, flyers, and digital marketing assets. Cohesive visual systems that make your brand memorable.</p>
+                    <span class="tag">Branding</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- SERVICES PRICING TABLE -->
+        <section>
+            <h2>Service Packages</h2>
+            <p class="section-intro">Transparent pricing with clearly defined deliverables. All packages include revisions and post-delivery support.</p>
+
+            <table class="services-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Turnaround</th>
+                        <th>Deliverable</th>
+                        <th>Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Landing Page</td>
+                        <td>3 – 5 days</td>
+                        <td>1-page responsive site</td>
+                        <td><span class="badge badge-free">From $80</span></td>
+                    </tr>
+                    <tr>
+                        <td>Multi-Page Website</td>
+                        <td>1 – 2 weeks</td>
+                        <td>5-page site + CSS</td>
+                        <td><span class="badge badge-low">From $200</span></td>
+                    </tr>
+                    <tr>
+                        <td>UI/UX Design</td>
+                        <td>5 – 7 days</td>
+                        <td>Figma prototype + handoff</td>
+                        <td><span class="badge badge-low">From $150</span></td>
+                    </tr>
+                    <tr>
+                        <td>Brand Identity</td>
+                        <td>1 week</td>
+                        <td>Logo + style guide + assets</td>
+                        <td><span class="badge badge-moderate">From $250</span></td>
+                    </tr>
+                    <tr>
+                        <td>Video Editing</td>
+                        <td>2 – 4 days</td>
+                        <td>Edited video (up to 5 min)</td>
+                        <td><span class="badge badge-free">From $60</span></td>
+                    </tr>
+                    <tr>
+                        <td>Full Stack Web App</td>
+                        <td>3 – 4 weeks</td>
+                        <td>Frontend + backend + DB</td>
+                        <td><span class="badge badge-moderate">From $600</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- PROCESS SECTION -->
+        <section>
+            <h2>My Process</h2>
+            <p class="section-intro">How I take your project from idea to launch — structured, transparent, and efficient.</p>
+            <div class="articles-grid">
+                <article>
+                    <span class="article-icon">📋</span>
+                    <h3>1. Discovery</h3>
+                    <p>We start with a detailed brief. I understand your goals, audience, brand, and technical requirements before writing a single line of code.</p>
+                    <span class="tag">Planning</span>
+                </article>
+                <article>
+                    <span class="article-icon">✏️</span>
+                    <h3>2. Design</h3>
+                    <p>Wireframes and visual mockups give you a clear picture before development begins. Feedback rounds ensure we're aligned at every stage.</p>
+                    <span class="tag">Wireframe → Mockup</span>
+                </article>
+                <article>
+                    <span class="article-icon">⚙️</span>
+                    <h3>3. Build</h3>
+                    <p>Clean, well-commented code. Semantic HTML, optimized CSS, responsive layouts. Tested on multiple browsers and devices before delivery.</p>
+                    <span class="tag">Development</span>
+                </article>
+                <article>
+                    <span class="article-icon">🚀</span>
+                    <h3>4. Launch &amp; Support</h3>
+                    <p>Deployment assistance, handover documentation, and 30 days of post-launch support included in every project package.</p>
+                    <span class="tag">Delivery</span>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PART 1: SEMANTIC ASIDE (Sidebar) -->
+    <aside class="sidebar">
+
+        <div class="sidebar-card">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="files.zip">Download Rate Card</a></li>
+                <li><a href="contact.html">Request a Quote</a></li>
+                <li><a href="projects.html">View Portfolio</a></li>
+                <li><a href="contact.html">Book a Call</a></li>
+                <li><a href="contact.html">Client Testimonials</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Availability</h3>
+            <div class="alert success">
+                <strong>✅ Currently Available</strong>
+                Taking new projects from June 2026. Limited slots open.
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Tools I Use</h3>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                <span class="badge-pill" style="font-size:0.7rem;">VS Code</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Figma</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Photoshop</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Premiere Pro</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Git & GitHub</span>
+                <span class="badge-pill" style="font-size:0.7rem;">XAMPP</span>
+                <span class="badge-pill" style="font-size:0.7rem;">Notion</span>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Client Testimonial</h3>
+            <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.65; font-style:italic;">
+                "Mwakalobo delivered our website on time, on budget, and beyond our expectations. Clean code, beautiful design. Highly recommend."
+            </p>
+            <p style="font-size:0.75rem; color:var(--accent); margin-top:0.6rem; font-family:var(--font-mono);">— Amina K., TechDar CEO</p>
+        </div>
+
+    </aside>
+
+</div><!-- end .page-grid -->
+
+<!-- PART 1: FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <h3>👨‍💻 Mr. Mwakalobo</h3>
+        <p>Full-Stack Developer · UI Designer · Multimedia Specialist</p>
+        <div class="footer-links">
+            <a href="mailto:hello@mwakalobo.dev">hello@mwakalobo.dev</a>
+            <a href="tel:+255700000000">+255 700 000 000</a>
+        </div>
+        <div class="footer-social">
+            <a class="social-btn" href="https://github.com/mwakalobo" target="_blank" rel="noreferrer noopener" title="GitHub"><img src="img/git.png" alt="GitHub" style="width:20px; height:20px;"></a>
+            <a class="social-btn" href="https://www.linkedin.com/in/mwakalobo" target="_blank" rel="noreferrer noopener" title="LinkedIn"><img src="img/in.png" alt="LinkedIn" style="width:20px; height:20px;"></a>
+            <a class="social-btn" href="https://twitter.com/mwakalobo" target="_blank" rel="noreferrer noopener" title="Twitter"><img src="img/x.png" alt="Twitter" style="width:20px; height:20px;"></a>
+            <a class="social-btn" href="https://www.behance.net/mwakalobo" target="_blank" rel="noreferrer noopener" title="Behance"><img src="img/social.png" alt="Behance" style="width:20px; height:20px;"></a>
+        </div>
+        <p style="font-size:0.75rem; margin-top:0.5rem;">&copy; 2026 Mr. Mwakalobo. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
